@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class DeepArPreview extends StatelessWidget {
-  const DeepArPreview(this.controller, {Key? key}) : super(key: key);
+  const DeepArPreview(this.controller, {Key key}) : super(key: key);
 
   final CameraDeepArController controller;
 

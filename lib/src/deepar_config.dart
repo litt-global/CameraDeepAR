@@ -1,4 +1,5 @@
 import 'package:camera_deep_ar/src/deepar_controller.dart';
+import 'package:flutter/foundation.dart';
 
 import 'enums.dart';
 
@@ -27,37 +28,20 @@ class DeepArConfig {
   final bool isInitialized;
 
   /// Value of the view is set after [CameraDeepArController.initialize] has completed successfully.
-  final int? viewId;
+  final int viewId;
 
-  final bool? isRecording;
+  final bool isRecording;
 
   /// Creates a new deepAr camera controller state.
   const DeepArConfig(
-      {required this.androidKey,
-      required this.ioskey,
-      this.isInitialized = false,
-      this.isRecording = false,
-      this.displayMode = DisplayMode.camera,
-      this.cameraMode = CameraMode.mask,
-      this.cameraDirection = CameraDirection.front,
-      this.recordingMode = RecordingMode.photo,
-      this.viewId});
+      {@required this.androidKey, @required this.ioskey, this.isInitialized = false, this.isRecording = false, this.displayMode = DisplayMode.camera, this.cameraMode = CameraMode.mask, this.cameraDirection = CameraDirection.front, this.recordingMode = RecordingMode.photo, this.viewId});
 
   /// Creates a modified copy of the object.
   ///
   /// Explicitly specified fields get the specified value, all other fields get
   /// the same value of the current object.
 
-  DeepArConfig copyWith(
-      {String? androidKey,
-      String? ioskey,
-      DisplayMode? displayMode,
-      CameraMode? cameraMode,
-      CameraDirection? cameraDirection,
-      RecordingMode? recordingMode,
-      bool? isInitialized,
-      bool? isRecording,
-      int? viewId}) {
+  DeepArConfig copyWith({String androidKey, String ioskey, DisplayMode displayMode, CameraMode cameraMode, CameraDirection cameraDirection, RecordingMode recordingMode, bool isInitialized, bool isRecording, int viewId}) {
     return DeepArConfig(
         androidKey: androidKey ?? this.androidKey,
         ioskey: ioskey ?? this.ioskey,

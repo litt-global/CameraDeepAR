@@ -27,20 +27,20 @@ class DeepArEventHandler {
   /// The `CameraReadyCallback` typedef includes the following parameter:
   /// the bool isReady
   ///
-  CameraReadyCallback? onCameraReady;
+  CameraReadyCallback onCameraReady;
 
   ///
   /// The `VideoRecordingCallback` typedef includes the following parameter:
   /// the video path
   ///
-  VideoRecordingCallback? onVideoRecordingComplete;
+  VideoRecordingCallback onVideoRecordingComplete;
 
   ///
   /// The `SnapPhotoCallback` typedef includes the following parameter:
   /// the photo path
   ///
-  SnapPhotoCallback? onSnapPhotoCompleted;
-  SnapPhotoCallback? onSwitchEffect;
+  SnapPhotoCallback onSnapPhotoCompleted;
+  SnapPhotoCallback onSwitchEffect;
 
   ///
   /// Constructs a [DeepArEventHandler]

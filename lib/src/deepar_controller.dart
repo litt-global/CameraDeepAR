@@ -19,16 +19,16 @@ class CameraDeepArController extends ValueNotifier<DeepArConfig> {
 
   bool _isDisposed = false;
 
-  DeepArEventHandler? _eventHandler;
+  DeepArEventHandler _eventHandler;
 
-  static late MethodChannel _channel;
+  static  MethodChannel _channel;
 
   static const EventChannel _eventChannel =
       EventChannel('plugins.flutter.io/deep_ar_camera/events');
 
-  static Stream? _stream;
+  static Stream _stream;
 
-  static StreamSubscription? _subscription;
+  static StreamSubscription _subscription;
 
   ///
   /// Sets the engine event handler.
@@ -88,25 +88,25 @@ class CameraDeepArController extends ValueNotifier<DeepArConfig> {
     return _channel.invokeMethod('stopVideoRecording');
   }
 
-  Future setCameraMode({required CameraMode mode}) async {
+  Future setCameraMode({@required CameraMode mode}) async {
     return _channel.invokeMethod('setCameraMode', <String, dynamic>{
       'mode': CameraMode.values.indexOf(mode),
     });
   }
 
-  Future setDisplayMode({required DisplayMode mode}) async {
+  Future setDisplayMode({@required DisplayMode mode}) async {
     return _channel.invokeMethod('setDisplayMode', <String, dynamic>{
       'mode': DisplayMode.values.indexOf(mode),
     });
   }
 
-  Future setRecordingMode({required RecordingMode recordingMode}) async {
+  Future setRecordingMode({@required RecordingMode recordingMode}) async {
     return _channel.invokeMethod('setRecordingMode', <String, dynamic>{
       'recordingMode': RecordingMode.values.indexOf(recordingMode),
     });
   }
 
-  Future switchCameraDirection({required CameraDirection direction}) async {
+  Future switchCameraDirection({@required CameraDirection direction}) async {
     return _channel.invokeMethod('switchCameraDirection', <String, dynamic>{
       'direction': CameraDirection.values.indexOf(direction),
     });
@@ -120,7 +120,7 @@ class CameraDeepArController extends ValueNotifier<DeepArConfig> {
 
   Future switchEffect(CameraMode mode, String path) async {
     // late File loadFile;
-    late String filePath;
+     String filePath;
 
     if (!path.contains("none")) {
       String fileName = path.split("/").last;
@@ -187,7 +187,6 @@ class CameraDeepArController extends ValueNotifier<DeepArConfig> {
       Permission.camera,
       Permission.microphone,
       Permission.storage,
-      Permission.manageExternalStorage,
       Permission.mediaLibrary,
     ].request();
   }
