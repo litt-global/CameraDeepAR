@@ -244,8 +244,10 @@ public class DeepArCameraView : NSObject,FlutterPlatformView,DeepARDelegate, Flu
                 self.deepAR.takeScreenshot()
                 result("You Tapped on SnapPhoto")
             } else if call.method == "dispose" {
+                self.cameraController.stopCamera();
                 self.deepAR.shutdown()
-                result("You Tapped on SnapPhoto")
+//                self.arView.shutdown()
+                result("Disposed")
             }else if call.method == "switchEffect" {
                 
                 let dict = call.arguments as! Dictionary<String, AnyObject>
