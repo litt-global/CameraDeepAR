@@ -250,6 +250,10 @@ public class HandleDeepAr {
         deepAR.release();
         deepAR = null;
         pluginView.dispose();
+        if (null != cameraGrabber) {
+            cameraGrabber.stopPreview();
+            cameraGrabber.releaseCamera();
+        }
     }
 
     public void switchEffect(String mode, String pathJava) {
