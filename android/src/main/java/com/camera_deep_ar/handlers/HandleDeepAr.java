@@ -249,6 +249,7 @@ public class HandleDeepAr {
         deepAR.setAREventListener(null);
         deepAR.release();
         deepAR = null;
+        pluginView.dispose();
     }
 
     public void switchEffect(String mode, String pathJava) {
