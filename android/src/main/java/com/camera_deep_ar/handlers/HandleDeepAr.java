@@ -79,7 +79,7 @@ public class HandleDeepAr {
         deepAR.setFaceDetectionSensitivity(1);
 
         handler = pluginView.handler;
-        init();
+        // init();
     }
 
     public void setupImage() {
@@ -254,6 +254,7 @@ public class HandleDeepAr {
             cameraGrabber.stopPreview();
             cameraGrabber.releaseCamera();
         }
+        handler.removeCallbacksAndMessages(null);
     }
 
     public void switchEffect(String mode, String pathJava) {
@@ -432,10 +433,10 @@ public class HandleDeepAr {
     public void init() {
 
         handler.post(() -> {
-//             setupCamera();
-//             setupImage();
-//            if (displayMode == TAG_CAMERA) setupCamera();
-//            if (displayMode == TAG_IMAGE) setupImage();
+            setupCamera();
+            setupImage();
+           if (displayMode == TAG_CAMERA) setupCamera();
+           if (displayMode == TAG_IMAGE) setupImage();
         });
         Log.d(TAG, "init");
     }
