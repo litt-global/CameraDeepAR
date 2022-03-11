@@ -96,7 +96,6 @@ Log.e(TAG,"onMethodCall "+methodCall.method);
         }
         else  if ("dispose".equals(methodCall.method)) {
             handle.dispose();
-            pluginView.dispose();
             result.success("Disposed");
         }else  if ("switchEffect".equals(methodCall.method)) {
             if (methodCall.arguments instanceof HashMap) {

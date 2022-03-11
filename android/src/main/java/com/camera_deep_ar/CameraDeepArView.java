@@ -192,7 +192,7 @@ public class CameraDeepArView implements PlatformView,
     public void dispose() {
     if(null!=handleDeepAr)handleDeepAr.onDestroy();
     if(null!=eventSink) eventSink.endOfStream();
-    frameView.removeAllViews();
+    // frameView.removeAllViews();
     }
 
     @Override

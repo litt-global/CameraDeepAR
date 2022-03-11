@@ -430,7 +430,7 @@ public class HandleDeepAr {
     }
 
     public void onDestroy() {
-        dispose();
+        // dispose();
         Log.d(TAG, "onDestroy");
     }
 
