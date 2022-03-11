@@ -419,16 +419,16 @@ public class HandleDeepAr {
 
     public void onPause() {
         if (null != deepAR) deepAR.setPaused(true);
-        // if (null != cameraGrabber) {
-        //     cameraGrabber.stopPreview();
-        //     cameraGrabber.releaseCamera();
-        // }
+        if (null != cameraGrabber) {
+            cameraGrabber.stopPreview();
+            cameraGrabber.releaseCamera();
+        }
         Log.d(TAG, "onPause");
     }
 
     public void onResume() {
         if (null != deepAR) deepAR.setPaused(false);
-        //init();
+        init();
         Log.d(TAG, "onResume");
     }
 
