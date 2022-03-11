@@ -105,19 +105,20 @@ public class HandleDeepAr {
 
             @Override
             public void onCameraError(String errorMsg) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                // AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                 Log.d("Setup", "Camera Erroring on setup");
-                builder.setTitle("Camera error");
-                builder.setMessage(errorMsg);
-                builder.setCancelable(true);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                setupCamera();
+                // builder.setTitle("Camera error");
+                // builder.setMessage(errorMsg);
+                // builder.setCancelable(true);
+                // builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                //     @Override
+                //     public void onClick(DialogInterface dialogInterface, int i) {
+                //         dialogInterface.cancel();
+                //     }
+                // });
+                // AlertDialog dialog = builder.create();
+                // dialog.show();
             }
         });
 
@@ -136,6 +137,7 @@ public class HandleDeepAr {
 //            }
 //            return true;
 //        });
+        Log.d("Setup camera", "Ricky setup" + cameraGrabber);
     }
 
     private void setOrientation(int orientation) {
@@ -246,10 +248,12 @@ public class HandleDeepAr {
     public void dispose() {
 //        disposed = true;
 //        methodChannel.setMethodCallHandler(null);
+        Log.d("Dispose camera", "Dispose Ricky " +  cameraGrabber);
         deepAR.setAREventListener(null);
         deepAR.release();
         deepAR = null;
         pluginView.dispose();
+        
         if (null != cameraGrabber) {
             cameraGrabber.stopPreview();
             cameraGrabber.releaseCamera();
@@ -412,16 +416,16 @@ public class HandleDeepAr {
 
     public void onPause() {
         if (null != deepAR) deepAR.setPaused(true);
-        if (null != cameraGrabber) {
-            cameraGrabber.stopPreview();
-            cameraGrabber.releaseCamera();
-        }
+        // if (null != cameraGrabber) {
+        //     cameraGrabber.stopPreview();
+        //     cameraGrabber.releaseCamera();
+        // }
         Log.d(TAG, "onPause");
     }
 
     public void onResume() {
         if (null != deepAR) deepAR.setPaused(false);
-        init();
+        //init();
         Log.d(TAG, "onResume");
     }
 
@@ -431,13 +435,8 @@ public class HandleDeepAr {
     }
 
     public void init() {
-
-        handler.post(() -> {
-            setupCamera();
-            setupImage();
-           if (displayMode == TAG_CAMERA) setupCamera();
-           if (displayMode == TAG_IMAGE) setupImage();
-        });
+        if (displayMode == TAG_CAMERA) setupCamera();
+        if (displayMode == TAG_IMAGE) setupImage();
         Log.d(TAG, "init");
     }
 
