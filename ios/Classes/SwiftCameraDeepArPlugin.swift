@@ -149,7 +149,7 @@ public class DeepArCameraView : NSObject,FlutterPlatformView,DeepARDelegate, Flu
         modeValue=""
         directionValue=""
         channel = FlutterMethodChannel(name: "plugins.flutter.io/deep_ar_camera/\(viewId)", binaryMessenger: messenger)
-        eventChannel = FlutterEventChannel(name: "plugins.flutter.io/deep_ar_camera/events", binaryMessenger: messenger)
+        eventChannel = FlutterEventChannel(name: "plugins.flutter.io/deep_ar_camera/events/\(viewId)", binaryMessenger: messenger)
         
         super.init()
         

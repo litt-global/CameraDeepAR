@@ -114,7 +114,7 @@ public class CameraDeepArView implements PlatformView,
         View view1 = activity.getLayoutInflater().inflate(R.layout.activity_camera, null);
 
         methodChannel = new MethodChannel(pluginBinding.getBinaryMessenger(), "plugins.flutter.io/deep_ar_camera/" + id);
-        eventChannel = new EventChannel(pluginBinding.getBinaryMessenger(), "plugins.flutter.io/deep_ar_camera/events");
+        eventChannel = new EventChannel(pluginBinding.getBinaryMessenger(), "plugins.flutter.io/deep_ar_camera/events/" + id);
 
 //        SurfaceView imgSurface = view1.findViewById(R.id.surface);
 //        imgSurface.setFocusable(true);

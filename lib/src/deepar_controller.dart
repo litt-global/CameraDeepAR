@@ -23,8 +23,7 @@ class CameraDeepArController extends ValueNotifier<DeepArConfig> {
 
   static late MethodChannel _channel;
 
-  static const EventChannel _eventChannel =
-      EventChannel('plugins.flutter.io/deep_ar_camera/events');
+  static late EventChannel _eventChannel;
 
   static Stream? _stream;
 
@@ -45,6 +44,8 @@ class CameraDeepArController extends ValueNotifier<DeepArConfig> {
   void init(int viewId) async {
     value = value.copyWith(isInitialized: true, viewId: viewId);
     _channel = MethodChannel('plugins.flutter.io/deep_ar_camera/$viewId');
+    _eventChannel = EventChannel('plugins.flutter.io/deep_ar_camera/events/$viewId');
+
     print("init $viewId ${_channel.name}");
 
     // _channel!.setMethodCallHandler((MethodCall call) async {
@@ -133,8 +134,7 @@ class CameraDeepArController extends ValueNotifier<DeepArConfig> {
     });
   }
 
-  Future changeParameterFloat(String changeParameter, String component,
-      String parameter, double floatValue) async {
+  Future changeParameterFloat(String changeParameter, String component, String parameter, double floatValue) async {
     return _channel.invokeMethod('changeParameterFloat', <String, dynamic>{
       'changeParameter': changeParameter,
       'component': component,
@@ -151,8 +151,7 @@ class CameraDeepArController extends ValueNotifier<DeepArConfig> {
   }
 
   //TODO: Implement this on both Android and IOS
-  Future changeParameterTexture(String changeParameter, String component,
-      String parameter, String texturePath) async {
+  Future changeParameterTexture(String changeParameter, String component, String parameter, String texturePath) async {
     return _channel.invokeMethod('changeParameterTexture', <String, dynamic>{
       'changeParameter': changeParameter,
       'component': component,
