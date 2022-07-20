@@ -161,11 +161,11 @@ class CameraDeepArController extends ValueNotifier<DeepArConfig> {
   }
 
   Future<File> createFileFromAsset(String path, String name) async {
-    final ByteData data = await rootBundle.load(path);
+    // final ByteData data = await rootBundle.load(path);
     Directory tempDir = await getTemporaryDirectory();
     File tempFile = File('${tempDir.path}/$name');
     // final file = await tempFile.writeAsBytes(data.buffer.asUint8List(), flush: true);
-    await tempFile.writeAsBytes(data.buffer.asUint8List(), flush: true);
+    // await tempFile.writeAsBytes(data.buffer.asUint8List(), flush: true);
     return tempFile;
     // return file;
   }
